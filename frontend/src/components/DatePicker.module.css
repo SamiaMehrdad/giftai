@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 30px;
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.input {
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background-color: #203;
+  cursor: pointer;
+  color: #fff;
+}
+
+.monthDropdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for 3x4 layout */
+  position: absolute;
+  top: -55px;
+  left: -30px;
+  width: 240px; /* Adjust based on your design */
+  background-color: #498;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.monthOption {
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s;
+}
+
+.monthOption:hover {
+  background-color: #387;
+  border: 1px solid #ccc;
+}

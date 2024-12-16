@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing CSS By Ana Tudor</title>
+    <style>
+      html,
+      body,
+      nav,
+      a {
+        display: grid;
+      }
+
+      html {
+        min-height: 100%;
+      }
+
+      body {
+        background: #121212;
+      }
+
+      svg[aria-hidden="true"] {
+        position: fixed;
+      }
+
+      nav {
+        place-self: center;
+        width: 6.25em;
+        font: 900 clamp(1.25em, 15vw, 9em) sans-serif;
+      }
+
+      a {
+        --hov: 0;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-gap: 0.5em;
+        transform: skewx(calc(var(--hov) * 9deg));
+        background: conic-gradient(#00f 0 0) text,
+          conic-gradient(#0f0 0 0) 50% / calc(var(--hov) * 100%) 0.05em
+            no-repeat,
+          rgb(calc(var(--hov) * 100%), 0%, 0%);
+        background-blend-mode: lighten;
+        color: #0000;
+        text-decoration: none;
+        text-transform: uppercase;
+        filter: url(#splitext) drop-shadow(2px 2px 5px #000);
+        transition: 0.3s;
+        transition-property: transform, background-size, background-color;
+        transition-delay: calc((1 - var(--hov)) * 0.3s), calc(var(--hov) * 0.3s);
+      }
+      a::before,
+      a::after {
+        background-color: inherit;
+        content: "";
+      }
+      a:hover,
+      a:focus {
+        --hov: 1;
+      }
+      a:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true">
+      <filter
+        id="splitext"
+        color-interpolation-filters="sRGB"
+        primitiveUnits="objectBoundingBox"
+        x="0%"
+        y="0%"
+        width="100%"
+        height="100%"
+      >
+        <feColorMatrix
+          values=" 0   0 0 0 1 
+		                      -.39 0 0 0 1 
+													-.67 0 0 0 1 
+													 0   0 1 0 0"
+          result="one"
+          height=".5"
+        ></feColorMatrix>
+        <feColorMatrix
+          in="SourceGraphic"
+          values="-.2  0 0 0 1 
+		                      -.74 0 0 0 1 
+													-.66 0 0 0 1 
+													 0   0 1 0 0"
+          result="two"
+          y=".5"
+          height=".5"
+        ></feColorMatrix>
+        <feColorMatrix
+          in="SourceGraphic"
+          values=" .5  0 0 0 .5 
+		                       0   0 0 0 0 
+													 0   0 0 0 0 
+													-.15 0 0 0 .5"
+          result="map"
+        ></feColorMatrix>
+        <feDisplacementMap
+          in="one"
+          scale="-.08"
+          xChannelSelector="R"
+          result="top"
+        ></feDisplacementMap>
+        <feDisplacementMap
+          in="two"
+          in2="map"
+          scale=".08"
+          xChannelSelector="R"
+        ></feDisplacementMap>
+        <feBlend in="top" result="txt"></feBlend>
+        <feColorMatrix
+          in="SourceGraphic"
+          values="0 0 0 0 1 
+		                      0 0 0 0 .5 
+													0 0 0 0 .32 
+													0 1 0 0 0"
+        ></feColorMatrix>
+        <feBlend in="txt"></feBlend>
+      </filter>
+    </svg>
+    <nav>
+      <a href="#">home</a><a href="#">about</a><a href="#">services</a
+      ><a href="#">contact</a>
+    </nav>
+  </body>
+</html>

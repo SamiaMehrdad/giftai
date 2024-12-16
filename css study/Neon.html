@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Masked Text with Neon Border</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #000; /* Dark background for contrast */
+        font-family: Arial, sans-serif;
+      }
+
+      .gradient-text {
+        font-size: 8rem; /* Large text size */
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        color: white;
+        -webkit-text-stroke: 2px transparent; /* Ensure smooth borders */
+        position: relative;
+      }
+
+      .gradient-text::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          red,
+          yellow,
+          lime,
+          cyan,
+          blue,
+          magenta,
+          blue,
+          cyan,
+          lime,
+          yellow
+        );
+        background-size: 300%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: gradient-shift 5s infinite linear;
+        /* animation: neon-shift 5s infinite linear; */
+      }
+
+      /* .gradient-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: transparent;
+        -webkit-text-stroke: 10px;
+        filter: drop-shadow(0 0 10px red) drop-shadow(0 0 40px yellow)
+          drop-shadow(0 60px lime) drop-shadow(0 0 80px cyan)
+          drop-shadow(0 0 120px blue);
+        animation: neon-shift 2s infinite linear;
+        animation: gradient-shift 5s infinite linear;
+      } */
+
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+          filter: drop-shadow(0 0 5px red) drop-shadow(0 0 5px yellow);
+        }
+        100% {
+          background-position: 100% 50%;
+          filter: drop-shadow(0 0 5px yellow) drop-shadow(0 0 5px red);
+        }
+      }
+
+      /* @keyframes neon-shift {
+        0% {
+          filter: drop-shadow(0 0 50px red) drop-shadow(0 0 80px yellow);
+        }
+        25% {
+          filter: drop-shadow(0 0 50px yellow) drop-shadow(0 0 80px lime);
+        }
+        50% {
+          filter: drop-shadow(0 0 50px lime) drop-shadow(0 0 80px cyan);
+        }
+        75% {
+          filter: drop-shadow(0 0 50px cyan) drop-shadow(0 0 80px magenta);
+        }
+        100% {
+          filter: drop-shadow(0 0 50px magenta) drop-shadow(0 0 80px red);
+        }
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="gradient-text" data-text="Neon Glow!">Neon Glow!</div>
+  </body>
+</html>

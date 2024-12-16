@@ -1,0 +1,214 @@
+.container {
+    /* overflow: hidden; */
+    /* height: 100vh; */
+}
+.landingPage {
+    font-family: "Comic Neue", "quick sand", sans-serif;
+    color: var(--color-text-normal);
+    position: relative;
+    top: -200px;
+}
+
+.mainContainer {
+    text-align: left;
+    margin: 50px 50px 50px 500px;
+    font-weight: bold;
+    color: #ccc;
+    /* height: 5000px; */
+}
+
+.mainTitle {
+    font-family: sans-serif;
+    transform: scaleX(0.9);
+    font-size: 7vw;
+    line-height: 6vw;
+    margin-bottom: 0;
+}
+.mainTitle span {
+    font-family: "Comic Neue", "quick sand";
+    content: attr(data-text);
+    font-size: 8vw;
+    font-weight: bold;
+    text-align: center;
+    background: radial-gradient(circle, red, yellow, lime, cyan, magenta);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 2px #999;
+    animation: gradient-shift 20s infinite linear;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.mainSubtext {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    display: inline;
+    margin: 0 20px 0 50px;
+}
+
+.ctaButton {
+    background: none;
+    color: #0af;
+    width: 120px;
+    aspect-ratio: 1/1;
+    border: 4px solid #00f;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 60000;
+    transition: all 0.2s;
+    filter: drop-shadow(0 1px 2px #000);
+    backdrop-filter: blur(10px);
+}
+#createBtn {
+    position: sticky;
+    top: 50px;
+    right: 150px;
+}
+#loginBtn {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+}
+.ctaButton:hover {
+    background: radial-gradient(circle, #5ff, #044);
+    color: white;
+    border: 4px solid #fff;
+    z-index: 60001;
+    box-shadow: 0 0 50px #0ff;
+}
+.ctaButton:active {
+    transform: rotate(-36deg) scale(0.8);
+}
+.heroContainer {
+    /* border: 1px solid red;
+    heigh: 8000px; */
+    scroll-snap-type: y mandatory;
+    position: relative;
+    top: 300px;
+}
+.heroImage {
+    position: sticky;
+    top: 200px;
+    margin: 10px 0 0 450px;
+    box-shadow: 0 0 150px #fff;
+    border-radius: 50px;
+    border: 5px solid #aaa;
+}
+.heroContainer h2 {
+    scroll-snap-align: start;
+    font-size: 2rem;
+    margin: 0 0 250px 50px;
+    color: #a8f;
+    filter: drop-shadow(0 0 2px #000);
+}
+#hero1 {
+    position: sticky;
+    top: 240px;
+    color: #fc8;
+}
+#hero2 {
+    position: sticky;
+    top: 320px;
+    color: #f84;
+}
+#hero3 {
+    position: sticky;
+    top: 400px;
+    color: #f65;
+}
+#hero4 {
+    position: sticky;
+    top: 480px;
+    color: #f50;
+}
+#hero5 {
+    /* position: sticky; */
+    /* top: 460px; */
+    position: sticky;
+    top: 560px;
+    color: transparent;
+    /* margin-bottom: 300px; */
+}
+.giftImage {
+    position: sticky;
+    top: 200px;
+    width: 400px;
+    aspect-ratio: 1/1;
+    filter: drop-shadow(0 0 25px #099);
+    margin-left: 400px;
+}
+.test {
+    display: block;
+    width: 250px;
+    font-size: 2rem;
+    line-height: 3rem;
+    margin: 50px 0 0 100px;
+}
+.test1 {
+    display: block;
+    width: 600px;
+    font-size: 6rem;
+    line-height: 5rem;
+    margin: 20px 0;
+    filter: drop-shadow(0 0 2px #000);
+}
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-back);
+    color: var(--light1);
+}
+
+.cube {
+    width: 300px;
+    position: sticky;
+    top: 150px;
+    left: 180px;
+    z-index: 9999;
+    transform: scale(0.8);
+}
+.wizardContainer {
+    /* position: absolute; */
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background: none;
+    /* transition: transform 5s ease-in-out; */
+}
+
+/* .wizardContainer.show {
+    transform: translateX(-100%);
+} */
+
+.show {
+    display: block;
+    /*opacity: 1; */
+    transform: scale(1);
+    transition: all 0.8s ease-in-out;
+}
+
+.hide {
+    /*opacity: 0; */
+    transform: scale(0);
+    transition: all 0.8s ease-in-out;
+}
+
+.hidex {
+    display: none;
+    /* transform: translateY(100%); */
+    transition: all 0.8s ease-in-out;
+}

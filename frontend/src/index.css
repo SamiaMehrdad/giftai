@@ -1,13 +1,206 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* index.css */
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
+
+/* 
+Highest level of CSS file. 
+Define global styles and atomic classes here. 
+*/
+
+* {
+    /* box-sizing: border-box; */
+    /* For Debugging: */
+    /* background: rgba(0, 100, 0, 0.1); */
+    /* border: 1px solid red; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Roboto:wght@400;500;700&family=Ubuntu:wght@400;500;700&display=swap");
+
+:root {
+    --color-brand: #e80;
+    --color-brand-alt: #488;
+    --color-active: #7dff92;
+    --color-back: #206;
+    --color-back-dark: #000;
+    --color-text-normal: #333;
+    --color-text-light: #555;
+    --color-text-light1: #bbb;
+    --color-text-attn: #025;
+    --color-hover: #950;
+    --shine: #fff;
+    --shade: rgba(0, 0, 0, 0.5);
+    --shade1: rgba(0, 0, 0, 0.3);
+    --shade2: rgba(0, 0, 0, 0.1);
+    --light: rgba(255, 255, 255, 0.8);
+    --light1: rgba(255, 255, 255, 0.5);
+    --light2: rgba(255, 255, 255, 0.2);
+    --color-excited: rgba(255, 200, 100, 0.5);
+    --color-excited-dark: rgba(0, 80, 80, 0.25);
+    --size-xs: 0.75rem;
+    --size-s: 0.85rem;
+    --size-n: 1rem;
+    --size-l: 1.1rem;
+    --size-xl: 1.2rem;
+    --size-xxl: 1.6rem;
+}
+
+body {
+    font-family: "Comic Neue", sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: radial-gradient(
+        circle,
+        var(--color-back),
+        var(--color-back-dark),
+        var(--color-back),
+        var(--color-back-dark)
+    );
+    background-size: cover;
+    background-color: #000;
+    color: var(--color-text-normal);
+    user-select: none; /* Disable text selection */
+    overflow-x: clip; /* Prevent some strange horizontal scrollbars */
+}
+
+.custom-scene-class {
+    position: fixed;
+    left: 300px;
+    top: 100px;
+    width: 300px;
+    perspective: 1500px !important;
+
+    /* height: 300px; */
+}
+
+.custom-face-class {
+    /* background-color: rgba(255, 0, 255, 0.5); */
+    /* padding: 50px; */
+    margin: 50%; /* Generate effect of moving box */
+}
+
+.close {
+    position: relative;
+    top: -50px;
+    right: 50px;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: scaleX(1.2);
+}
+.close::before {
+    content: "X";
+}
+.close:hover {
+    color: red;
+}
+
+/* -------------------- Interesting effect classes ------------------------*/
+.PatternedGlass {
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background-image: linear-gradient(30deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+    background-size: 20px 20px;
+}
+/* -------------------- Useful animated classes ------------------------*/
+.autoRotate {
+    animation: rotateFullAnimation;
+    animation-timeline: view();
+}
+
+@keyframes rotateFullAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* -------------------------------------------*/
+.autoShow {
+    animation: fadeInAnimation both;
+    animation-timeline: view(70% 5%);
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* -------------------------------------------*/
+.autoBlur {
+    animation: blurAnimation linear both;
+    animation-timeline: view();
+}
+@keyframes blurAnimation {
+    0% {
+        filter: blur(40px);
+    }
+    45%,
+    55% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(40px);
+    }
+}
+/*-------------------------------------------*/
+
+.autoFadeOut {
+    animation: fadeOutAnim linear;
+    animation-timeline: view();
+    animation-range: exit;
+}
+.autoFadeIn {
+    animation: fadeInAnim linear;
+    animation-timeline: view();
+    animation-range: entry;
+}
+
+/*-------- Amazing Hover effect ------------------*/
+.container:hover .square:not(:hover) {
+    filter: grayscale(1) blur(2px);
+}
+/* ----------------------------------------------- */
+.scroll-watcher {
+    height: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: #00f;
+    width: 100%;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scrollAnimation linear;
+    animation-timeline: scroll();
+}
+@keyframes scrollAnimation {
+    to {
+        scale: 1 1;
+    }
+}
+
+/*-------- keyframes for animations ------------------*/
+
+@keyframes fadeInAnim {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* ----------------------------------------------- */
+@keyframes fadeOutAnim {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }

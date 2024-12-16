@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ink effect</title>
+    <style>
+      body {
+        margin: 0;
+        color: #fff;
+        background: #000;
+      }
+
+      .banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+      }
+      .banner .content .title {
+        font-size: 6em;
+      }
+      .banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url(cuty1.png);
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        mask-image: url(ink.jpg);
+        mask-size: cover;
+        mask-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="content">
+        <div class="title">SOMETHING</div>
+        <p>Subscribe here!</p>
+      </div>
+    </div>
+  </body>
+</html>

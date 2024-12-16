@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Masked Text with Neon Border and Animated Background</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: radial-gradient(
+          ellipse,
+          #301a25,
+          #2a1d10,
+          #394f23,
+          #122424,
+          #322241,
+          #632845
+        );
+        background-size: 400% 400%;
+        font-family: Arial, sans-serif;
+        /* animation: background-shift 20s infinite; */
+      }
+
+      .gradient-text {
+        font-size: 8rem; /* Large text size */
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        color: white;
+        -webkit-text-stroke: 2px transparent; /* Ensure smooth borders */
+        position: relative;
+      }
+
+      .gradient-text::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          red,
+          yellow,
+          lime,
+          cyan,
+          blue,
+          magenta,
+          red
+        );
+        background-size: 300%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: gradient-shift 5s infinite linear;
+      }
+
+      .gradient-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: transparent;
+        -webkit-text-stroke: 2px;
+        filter: drop-shadow(0 0 10px red) drop-shadow(0 0 20px yellow)
+          drop-shadow(0 0 30px lime) drop-shadow(0 0 40px cyan)
+          drop-shadow(0 0 50px blue);
+        animation: neon-shift 2s infinite linear;
+      }
+
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes neon-shift {
+        0% {
+          filter: drop-shadow(0 0 10px red) drop-shadow(0 0 20px yellow);
+        }
+        25% {
+          filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px lime);
+        }
+        50% {
+          filter: drop-shadow(0 0 10px lime) drop-shadow(0 0 20px cyan);
+        }
+        75% {
+          filter: drop-shadow(0 0 10px cyan) drop-shadow(0 0 20px magenta);
+        }
+        100% {
+          filter: drop-shadow(0 0 10px magenta) drop-shadow(0 0 20px red);
+        }
+      }
+
+      @keyframes background-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-text" data-text="Neon Glow!">Neon Glow!</div>
+  </body>
+</html>

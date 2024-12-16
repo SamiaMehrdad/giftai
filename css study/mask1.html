@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Masked Text with Neon Border</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #000; /* Dark background for contrast */
+        font-family: Arial, sans-serif;
+      }
+
+      .gradient-text {
+        content: attr(data-text);
+        font-size: 8rem; /* Large text size */
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        background: radial-gradient(
+          circle,
+          red,
+          yellow,
+          lime,
+          cyan,
+          blue,
+          magenta,
+          red
+        );
+        background-size: 300%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: gradient-shift 10s infinite linear;
+      }
+
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-text" data-text="Neon Glow!">Neon Glow!</div>
+  </body>
+</html>
