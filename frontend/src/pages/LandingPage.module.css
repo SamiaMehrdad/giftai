@@ -67,7 +67,7 @@
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    z-index: 60000;
+    z-index: 2000;
     transition: all 0.2s;
     filter: drop-shadow(0 1px 2px #000);
     backdrop-filter: blur(10px);
@@ -83,11 +83,13 @@
     right: 50px;
 }
 .ctaButton:hover {
-    background: radial-gradient(circle, #5ff, #044);
+    /* background: radial-gradient(circle, #5ff, #044); */
+    background: radial-gradient(circle, #c5f, #204);
+
     color: white;
     border: 4px solid #fff;
-    z-index: 60001;
-    box-shadow: 0 0 50px #0ff;
+    /* z-index: 60001; */
+    box-shadow: 0 0 50px #c0f;
 }
 .ctaButton:active {
     transform: rotate(-36deg) scale(0.8);

@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cube from "../components/Cube";
 import Wizard from "../components/Wizard/Wizard";
+import LoginPanel from "../components/LoginPanel";
 import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
     const [showWizard, setShowWizard] = useState(false);
+    const [showLoginPanel, setShowLoginPanel] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) setIsLoggedIn(true);
+    }, []);
 
     const handleCreateClick = () => {
         setShowWizard(true);
     };
 
+    const handleLoginClick = () => {
+        setShowLoginPanel(true);
+    };
+
+    const handleCloseLoginPanel = () => {
+        setShowLoginPanel(false);
+    };
+
     return (
         <>
             <div className={styles.container}>
-                <button id={styles.loginBtn} className={`${styles.ctaButton} `}>
-                    Login!
+                <button id={styles.loginBtn} className={`${styles.ctaButton}`} onClick={handleLoginClick}>
+                    {isLoggedIn ? "Me" : "Login"}
                 </button>
                 <div className={`${styles.landingPage} ${showWizard ? styles.hidex : styles.show}`}>
                     <Cube className={styles.cube} faceClassName={styles.cubeFace}>
@@ -31,7 +47,7 @@ const LandingPage = () => {
                             Turn Your Sentiments into Stunning <span>GIFTS</span>
                         </h1>
                         <p className={styles.mainSubtext}>Unique gift with personalized verse and visuals!</p>
-                        <button id={styles.createBtn} className={`${styles.ctaButton} `} onClick={handleCreateClick}>
+                        <button id={styles.createBtn} className={`${styles.ctaButton}`} onClick={handleCreateClick}>
                             Create!
                         </button>
 
@@ -51,8 +67,7 @@ const LandingPage = () => {
                                 with each moo the love does grow! 🐄🎵 Happy Birthday, Grandpa George, it’s your big
                                 8-0! 🎂 Cows say moo, and we love you, with each moo the love does grow! 🐄🎵 Happy
                                 Birthday, Grandpa George, it’s your big 8-0! 🎂 Cows say moo, and we love you, with each
-                                moo the love does grow! 🐄🎵 Happy Birthday, Grandpa George, it’s your big 8-0! 🎂 Cows
-                                say moo, and we love you, with each moo the love does grow!
+                                moo the love does grow!
                             </p>
                         </div>
 
@@ -67,6 +82,9 @@ const LandingPage = () => {
             <div className={` ${showWizard ? styles.show : styles.hide}`}>
                 <Wizard onClose={() => setShowWizard(false)} />
             </div>
+
+            {/* Login Panel */}
+            {showLoginPanel && <LoginPanel onClose={handleCloseLoginPanel} />}
         </>
     );
 };

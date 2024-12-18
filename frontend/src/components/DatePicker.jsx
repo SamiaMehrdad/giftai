@@ -149,7 +149,7 @@ const DatePicker = ({ onConfirm, initialDate }) => {
 
             {/* Confirm Button */}
             <div className={styles.confirmButtonWrapper}>
-                <button className={styles.confirmButton} onClick={handleConfirm}>
+                <button className={` btn ${styles.confirmButton}`} onClick={handleConfirm}>
                     Confirm
                 </button>
             </div>

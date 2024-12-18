@@ -1,0 +1,164 @@
+/* Login Panel */
+.loginPanel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Full-screen background */
+    background: transparent; /* Semi-transparent background */
+    /* filter: drop-shadow(0 0 50px #afe); */
+    filter: drop-shadow(0 0 50px #eaf);
+    transform: translate(50%, -50%) rotate(0deg) scale(0);
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: top;
+    z-index: 2000;
+    transition: transform 0.5s ease-out;
+}
+.loginPanel.show {
+    transform: translate(100px, calc(100px - 70vh)) rotate(45deg) scale(1);
+}
+
+.loginPanelContent {
+    color: #fff;
+    width: 25vw;
+    height: 80vh; /* Fixed height for the login panel */
+    background: rgba(100, 50, 150, 0.8);
+    /* background: rgba(200, 180, 50, 0.8); */
+    backdrop-filter: blur(10px);
+    padding: 50px 20px 0 20px;
+    position: relative;
+    top: -50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    border-radius: 400px 500px 300px 600px;
+    border: 1px solid #c9f;
+}
+.innerContainer {
+    transform: rotate(-45deg) translate(-50px, 50px);
+}
+.innerContainer h3 {
+    color: #210;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.closeButton {
+    top: 190px;
+    right: -155px;
+    color: #535;
+    /* transform: rotate(-45deg); */
+    background: transparent;
+    border: none;
+    z-index: 5000;
+    height: 36px;
+    font-size: 20px;
+
+    border: 2px solid #535;
+    border-radius: 50%;
+    padding: 0 7px;
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.closeButton::after {
+    content: "+";
+}
+.closeButton:hover {
+    border-color: red;
+    color: red;
+}
+
+.emailLogin p {
+    margin-bottom: 10px;
+}
+
+.emailInput {
+    width: 160px;
+    padding: 10px 20px;
+    border: 3px solid #ccc;
+    border-radius: 999px;
+    outline: none;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.emailInput.invalid {
+    border-color: red;
+}
+
+.proceedButton {
+    position: absolute;
+    right: 2px;
+    top: 90px;
+    padding: 10px 8px;
+    background: #089;
+    color: white;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 999px;
+    z-index: 5001;
+}
+
+.proceedButton:hover {
+    border: none;
+    background: #0056b3;
+}
+.forgotPassword {
+    text-decoration: none;
+    color: #033;
+    display: block;
+}
+.forgotPassword:hover {
+    color: red;
+}
+
+.socialButtons button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid transparent;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 999px;
+}
+.socialButtons button:hover {
+    border: 1px solid var(--light1);
+}
+.socialButtons button:active {
+    border: 1px solid var(--light2);
+    color: var(--light1);
+}
+.googleButton {
+    background: #944;
+    color: white;
+}
+.googleButton::before,
+.facebookButton::before {
+    content: "";
+    position: absolute;
+    left: 25px;
+    transform: translateY(-20%);
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.googleButton::before {
+    background-image: url("/public/logo-google.png");
+    filter: drop-shadow(1px 1px 1px #000);
+}
+.facebookButton::before {
+    background-image: url("/public/logo-facebook.png");
+}
+.facebookButton {
+    background: #4267b2;
+    color: white;
+}

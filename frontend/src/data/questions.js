@@ -82,7 +82,7 @@ const questions = [
         imageUrl: "/gift-color.png",
         comment: "Let’s get this rainbow right!",
         options: ["Red", "Blue", "Green", "Yellow", "Pink", "Purple", "Orange"],
-        colors: ["#833", "#06f", "#094", "#cc0", "#c88", "#50c", "#a60"],
+        colors: ["#833", "#06f", "#0b4", "#cc0", "#c88", "#50c", "#a60"],
         inputType: "button",
         allowIgnore: true,
     },
