@@ -2,8 +2,9 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 
-const authMiddleware = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
     const token = req.headers.authorization?.split(" ")[1];
+
     if (!token) {
         res.status(401);
         throw new Error("Not authorized, no token");
@@ -19,4 +20,4 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
     }
 });
 
-module.exports = authMiddleware;
+module.exports = { protect };
